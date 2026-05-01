@@ -23,7 +23,7 @@ authoer: ru322
     - Tex Liveで一通りインストールするのに数時間かかる(OverleafとかCloudLaTexあるけど…)
     - コンパイルエラーが非常にわかりにくい
 
-## 余談
+## 余談(読まなくていいです)
 基本的にTypstとかTexは決められたレイアウト通りに書く用途に向いています。
 逆に自由に配置する用途には向かないです。
 でもレポートに自由度なんて基本的に必要ないのでこういったツールが便利という話になります。
@@ -146,11 +146,88 @@ int main() {
 )
 ```
 # 引用とラベルのすゝめ
+先ほどコードブロックや図、表を挿入する方法を学習しました。これらの要素を文章中で参照する。つまり
 
+> 「図1のように…」「表2のように…」「コードブロック3のように…」
+
+といったことをスマートに行う方法です。
 ## 図と表にラベルを追加する
-
+先ほど作成した図や表にラベルを追加してみましょう。
+`#figure`の後ろに`<fig:example>`のようにラベルを追加することができます。
+図であれば`<fig:example>`、表であれば`<tab:example>`、コードブロックであれば`<code:example>`のようにすると区別がついで便利です。
+```
+#figure(
+  caption: "Typstのロゴ",
+  supplement: "図",
+  kind: "image",
+  image("dummy.png")
+)<fig:example>
+```
 ## 引用してみる
 
+文章中で先ほど追加したラベルを引用してみましょう。
+例えば`<fig:example>`というラベルを追加した図を引用する場合は次のようにします。
+```
+詳しくは @fig:example を参照。 
+```
+このようにすることで、図1のように…といった感じで自動的に番号が振られて参照されます。
+この方法の利点は、途中で図を追加したり削除したりしても、番号が自動的に振り直されることです。
+
+## 文献の引用
+
+この引用の方法は`#figure`だけでなく、文献の引用にも使うことができます。
+
+基本的にTypstで文献を引用する場合は、BibTeX形式のファイルを用意します。
+yaml形式で書く方法も紹介されていますが、なぜか日付がうまく表示されなかったりするので、BibTex形式をおすすめします。
+
+ワークスペースのルートに`ref.bib`というファイルを作成して引用文献の情報を記述していきます。
+これは自分で書いても良いのですが、Google Scholarなりで論文だったりを見るとBibTeX形式で引用情報を出力する機能があるので、そちらを利用するのが楽です。
+
+ここでは例としてパーリンノイズの論文 [Improving noise](https://dl.acm.org/doi/abs/10.1145/566570.566636)を引用してみましょう。
+
+URLからExport Citationをクリックして、BibTeXを選択します。
+(この辺はサイトによって違うかもしれませんが、基本的にはBibTeX形式で引用情報を出力する機能があるはずです。)
+
+![Export Bib](./img/citation.png)
+すると次のようなBibTeX形式の引用情報が得られます。
+```
+@inproceedings{10.1145/566570.566636,
+author = {Perlin, Ken},
+title = {Improving noise},
+year = {2002},
+isbn = {1581135211},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/566570.566636},
+doi = {10.1145/566570.566636},
+abstract = {Two deficiencies in the original Noise algorithm are corrected: second order interpolation discontinuity and unoptimal gradient computation. With these defects corrected, Noise both looks better and runs faster. The latter change also makes it easier to define a uniform mathematical reference standard.},
+booktitle = {Proceedings of the 29th Annual Conference on Computer Graphics and Interactive Techniques},
+pages = {681–682},
+numpages = {2},
+keywords = {procedural texture},
+location = {San Antonio, Texas},
+series = {SIGGRAPH '02}
+}
+```
+この情報を`ref.bib`に記述します。
+複数の文献を引用する場合は、追記していけば大丈夫です。
+
+今回のケースでは引用キーが`10.1145/566570.566636`になっていますが、これでもどうにかなるといえばなりますが、`@`での引用ができなくなるので、引用キーを`perlinnoise`というようにわかりやすいものに変更しておくと便利です。
+
+
+次のこの文献を引用していきましょう。typstファイルの末尾に次のように記述します。
+```
+#bibliography(title: "参考引用文献", "ref.bib", full: true)
+```
+これで参考引用文献のセクションができて、先ほど`ref.bib`に記述した文献が表示されるようになります。
+
+レポート中でこの文献を引用する場合は、次のようにします。
+```
+詳しくは @perlinnoise を参照。
+```
+
+最終的には次のような感じで表示されるようになります。
+![引用の例](./img/bib.png)
 # APPENDIX
 
 ## Matplotlibでグラフを作成する

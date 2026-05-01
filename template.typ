@@ -97,7 +97,7 @@ int main() {
   supplement: "図",
   kind: "image",
   image("dummy.png")
-)
+)<fig:example>
 
 == 表
 #figure(
@@ -114,13 +114,15 @@ int main() {
     [2,1], [2,2], [2,3],
     table.hline()
   )
-)
+)<tab:example>
 
 = 引用とラベルのすゝめ
+
 
 
 == 図と表にラベルを追加する
 
 == 引用してみる
 
-
+パーリンノイズは滑らかな乱数を生成するアルゴリズムで、コンピュータグラフィックスなどでよく使用される @perlinnoise 。
+#bibliography(title: "参考引用文献", "ref.bib", full: true)
