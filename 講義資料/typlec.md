@@ -269,8 +269,34 @@ uv add matplotlib-fontja
 uv sync
 ```
 ## Git/GitHubでレポートを管理する
+レポートの管理にGit/GitHubを用いると、バージョン管理ができたり、複数人での共同編集がしやすくなったりします。
+
+参考までに、次のようにレポートの構成を管理すると便利かも。
+基本的にレポートは実験をしているフォルダに簡単にアクセスできるようにしておくとあとが楽かも
+
+```
+TUAT/
+├── ex2a
+│   ├── 01
+│   │   ├── codes: 作成したコード
+│   │   ├── materials: 配布された資料
+│   │   ├── report
+│   │   │   ├── report.typ: レポートのTypstファイル
+│   │   │   ├── imgs: レポートに使用する画像
+│   │   │   │   ├── fig_max_open_list_size.png
+│   │   │   │   └── fig_next_calls.png
+│   │   │   └── ref.bib
+│   │   └── results: コードの実行結果
+│   │       ├── inputs: 入力データ
+│   │       ├── outputs: 出力データ
+│   │       └── summary: 要約
+│   ├── pyproject.toml
+└── ex1a
+    └── ...
+```
 
 ## 実はチューリング完全なTypst
+
 
 ## コーディングエージェントでレポートを…
 
