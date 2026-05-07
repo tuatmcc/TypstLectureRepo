@@ -230,8 +230,44 @@ series = {SIGGRAPH '02}
 ![引用の例](./img/bib.png)
 # APPENDIX
 
+ここから先は蛇足的なな内容になります。Typstを用いてレポートを書く上で必須な内容ではないので、興味がある人だけ読んでみてください。(と言いつつMatplotlib, Git/GitHubの内容は頭に入れておいたほうが良いかも)
 ## Matplotlibでグラフを作成する
+レポートを作成する上で、グラフを作成する必要がある場合も多いと思います。
+Excelを用いても良いのですが、あまり綺麗なグラフができなかったり、細かい調整が難しかったりします。
+PythonのMatplotlibを用いると、綺麗なグラフを作成することができます。
 
+### Astral UVのインストール
+Pythonのパッケージマネージャであるuvを用いてmatplotlibをインストールします。
+今回は今レポートを書いている環境にインストールして行きますが、プログラミング演習などWSL環境でプログラムを書いている人はそちらでインストールしたほうが良いかも？
+Windows環境
+```
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+macOS/Linux(WSL)環境
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+### VSCodeにJupyter拡張機能を入れる
+VSCodeの拡張機能からJupyterを検索してインストールします。
+
+![Jupyter Extension](./img/install-jupyter.png)
+### Matplotlibをインストールする
+
+自分で環境構築する場合は
+```sh
+#あくまで参考
+uv init
+uv add matplotlib
+uv add ipykernel
+uv add matplotlib-fontja
+``` 
+のようにして環境を構築します。
+今回はすでに`pyproject.toml`が用意されているので、次のコマンドで環境に入ることができます。
+```sh
+uv sync
+```
 ## Git/GitHubでレポートを管理する
 
 ## 実はチューリング完全なTypst
