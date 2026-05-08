@@ -13,7 +13,7 @@ TODO:
  -->
 
 # はじめに
-対象者(or)
+対象者(論理和)
 - レポートを書くのにWordを使っている
 - Latexを用いているがTypstに興味がある
 - レポートの書き方がわからない
@@ -150,6 +150,8 @@ $$
 sum_(i=1)^n i = (n(n + 1)) / 2
 $$
 ``` 
+
+入力の仕方がわからない記号などは公式の[Named general symbols.](https://typst.app/docs/reference/symbols/sym/) を参照してみてください。
 
 ## コードブロック
 ````
@@ -288,6 +290,13 @@ Typstでは表紙を簡単に作成することができる——のですが、
 
 PDFの結合には色々な方法がありますが、今回は`pdfunite`というコマンドを用いて結合してみましょう。
 `pdfunite`はLinuxやWSL環境であれば次のコマンドでインストールできます。
+
+Windows環境で作業している場合、今作業しているフォルダをエクスプローラで開いて、アドレスバーに`wsl`と入力してみてください。
+WSL環境のターミナルが、現在のフォルダで開かれます。
+
+![WSLで開く](./img/open-in-wsl.png)
+
+
 ```sh
 sudo apt-get install poppler-utils
 ```
@@ -295,8 +304,10 @@ sudo apt-get install poppler-utils
 これで`pdfunite`コマンドが使えるようになります。
 次のコマンドで表紙とレポートを結合してみましょう
 ```sh
-pdfunite cover.pdf report.pdf final_report.pdf
+pdfunite title.pdf report.pdf merged_report.pdf
 ```
+![結合](./img/pdfunite.png)
+↑私の環境は多少カスタマイズされているので、見た目は違ってよいです。
 
 macOSをお使いの方はどうやらFinder上で簡単に結合できるそうです。
 windowsをお使いの方でWSL環境を使いたくない方は、CubePDFというソフトを用いるなりすると良いかもしれません。
