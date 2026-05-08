@@ -2,10 +2,43 @@
 #import "@preview/showybox:2.0.4": showybox
 
 #let font_sizes = (h1: 18pt, h2: 16pt, h3: 14pt, h4: 12pt, normal: 11pt, math: 12pt)
-#let code_fonts = ("Consolas")
-#let math_fonts = ("Times New Roman")
-#let serif_fonts = ("Harano Aji Mincho")
-#let sans_fonts = ("Harano Aji Gothic")
+#let code_fonts = (
+  "Consolas",
+  "Cascadia Code",
+  "SF Mono",
+  "Menlo",
+  "DejaVu Sans Mono",
+  "Liberation Mono",
+  "Noto Sans Mono CJK JP",
+)
+#let math_fonts = (
+  "Cambria Math",
+  "STIX Two Math",
+  "Latin Modern Math",
+  "Times New Roman",
+)
+#let serif_fonts = (
+  "Yu Mincho",
+  "Hiragino Mincho ProN",
+  "Hiragino Serif",
+  "BIZ UDPMincho",
+  "Noto Serif CJK JP",
+  "Source Han Serif",
+  "IPAexMincho",
+  "IPAMincho",
+  "Harano Aji Mincho",
+)
+#let sans_fonts = (
+  "Yu Gothic",
+  "Hiragino Sans",
+  "Hiragino Kaku Gothic ProN",
+  "BIZ UDPGothic",
+  "Noto Sans CJK JP",
+  "Source Han Sans",
+  "IPAexGothic",
+  "IPAGothic",
+  "Harano Aji Gothic",
+)
 
 #let leading_size = 1.0em
 #let spacing_size = 1.2em
@@ -32,7 +65,8 @@
 #show figure.where(kind: "結果"): set figure(supplement: "結果")
 #show figure.where(kind: "コード"): set block(breakable: true)
 #show figure.where(kind: "結果"): set block(breakable: true)
-// #show math.equation: set text(font: "Cambria Math", size: font_sizes.math)
+#show math.equation.where(block: false): set text(font: math_fonts)
+#show math.equation.where(block: true): set text(font: math_fonts, size: font_sizes.math)
 // #let fcode(capt, sup: "コード", ..body) = {
 //   [#figure(
 //     caption: capt,
