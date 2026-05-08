@@ -354,6 +354,14 @@ uv add matplotlib-fontja
 ```sh
 uv sync
 ```
+
+これで環境の構築が完了しました。
+`matplotlib/final-plot.ipynb`を開き、コードを実行してみましょう。
+まず、カーネルを選択します。`Ptython Environment`のところをクリックして、`matplotlib-lec`を選択してください。
+
+![select kernel](./img/select-kernel.png)
+
+![jupyter run all](./img/run.png)
 ## Git/GitHubでレポートを管理する
 レポートの管理にGit/GitHubを用いると、バージョン管理ができたり、複数人での共同編集がしやすくなったりします。
 
