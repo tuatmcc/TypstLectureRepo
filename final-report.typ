@@ -171,4 +171,4 @@ int main(void) {
 
 レポート末尾に文献一覧を出力するには、BibTeX 形式のファイルを読み込んで次のように記述する。
 
-#bibliography(title: "参考引用文献", "ref.bib", full: true)
+#bibliography(title: "参考引用文献", "final-ref.bib", full: true)
