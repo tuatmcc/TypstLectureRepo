@@ -1,7 +1,7 @@
 ---
 title: 【Typst】レポート講習会
 date: 2026-05-13
-authoer: ru322
+author: ru322
 ---
 <!-- 
 TODO:
@@ -77,10 +77,10 @@ https://code.visualstudio.com/Download#
 
 インストーラを起動したらインストールウィザードの案内どおりに入れる。「VSCodeで開く」を追加するオプションは入れておいたほうが良い。
 
-## VSCodeにTinymist Tyspt拡張をいれる
+## VSCodeにTinymist Typst拡張をいれる
 [左側のバー]-> [拡張機能] -> [検索バー]
 
-typstと検索して`Tinymist TYpst`拡張機能をインストールする
+typstと検索して`Tinymist Typst`拡張機能をインストールする
 
 ![Tinymist Typst Install](./img/install-extention.png)
 
@@ -119,6 +119,7 @@ PDFをクリックすると同階層にPDFが生成される。
 
 # 基本的な文法
 ここではレポートを書く上で最低限必要な文法を見ていきます。
+ここから実際に自分自身で実際に`template.typ`へ記述してみましょう！
 
 `template.typ`に実際に記述してみて、どのように表示されるかを実際に確認していきましょう！
 ## 章立て
@@ -357,7 +358,7 @@ uv sync
 
 これで環境の構築が完了しました。
 `matplotlib/final-plot.ipynb`を開き、コードを実行してみましょう。
-まず、カーネルを選択します。`Ptython Environment`のところをクリックして、`matplotlib-lec`を選択してください。
+まず、カーネルを選択します。`Python Environment`のところをクリックして、`matplotlib-lec`を選択してください。
 
 ![select kernel](./img/select-kernel.png)
 
@@ -371,17 +372,18 @@ uv sync
 ```sh
 git init
 git add .
-git commit -m ""
+git commit -m "どのような変更を加えたのかの説明/適当なコメント"
 git push
 ```
 この辺のコマンドが使えれば大体のことはできると思います。
+~~わからなかったらLLMに聞いてみよう~~
 
 
 ```
 TUAT/
 ├── ex2a
 │   ├── 01
-│   │   ├── codes: 作成したコード
+│   │   ├── source: 作成したコード
 │   │   ├── materials: 配布された資料
 │   │   ├── report
 │   │   │   ├── report.typ: レポートのTypstファイル
@@ -397,13 +399,16 @@ TUAT/
 └── ex1a
     └── ...
 ```
+
+筆者は最近はこのような構成でレポートを管理しています。
+この辺は好みもあると思うので、自分に合った管理方法を見つけてみてください。
 ## NixOS/NixOS-WSLでレポート環境を構築する
 基本的にプログラムを書くのはWSL環境なのでレポートもWSL環境で書くのが楽なのですが(macOSは知りません)、フォントをインストールしたりするのが面倒だったりします。
 
 経験上WSL環境というのは比較的簡単に破壊されるので、そのへん楽にしていきたいということで、
 
 宣言的に環境を構築できるNixOS/NixOS-WSLでレポート環境を構築する方法も紹介します。
-これは私も使っているオススメの方法です。
+これは筆者も使っているオススメの方法です。
 
 でもここで懇切丁寧に説明するには余白が足りないのでとりあえず私のdotfilesのリンクだけ貼っておきます。
 
@@ -413,8 +418,3 @@ https://github.com/ru322/dotfiles
 
 ## コーディングエージェントでレポートを…
 大人の事情により割愛
-
-# 詰まったらみるところ
-## Previewが表示されない
-- VSCodeを再起動してみる
-- `Tinymist Typst`拡張機能がインストールされているか確認する
